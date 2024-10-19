@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="icon" href="https://i.imgur.com/QTtC7eW.png" type="image/png"> <!-- Link to your favicon -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-bar">
+        <input type="text" id="searchInput" placeholder="Search...">
+    </div>
+    <div class="container">
+        <div class="note-input" id="noteInputContainer">
+            <div class="make-note-box" id="makeNoteBox">
+                <span class="make-note-text">Take a Note...</span>
+                <div class="note-form" id="noteForm">
+                    <select id="noteFlair">
+                        <option value="misc">Misc</option>
+                        <option value="school">School</option>
+                        <option value="work">Work</option>
+                        <option value="home">Home</option>
+                    </select>
+                    <input type="text" id="noteTitle" placeholder="Title" />
+                    <textarea id="noteContent" placeholder="Write your note here..."></textarea>
+                    <button id="saveNoteBtn">Save Note</button> <!-- Save button for new notes -->
+                </div>
+            </div>
+        </div>
+        <div id="notesList"></div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalNoteTitle"></h2>
+            <p id="modalNoteContent"></p>
+            <button id="editNoteBtn">Edit Note</button> <!-- Separate Edit button -->
+            <button id="deleteNoteBtn">Delete Note</button> <!-- Delete button -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

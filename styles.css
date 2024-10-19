@@ -1,0 +1,281 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    background-color: #1e1e1e; /* Dark background */
+    color: white; /* White text */
+}
+
+.container {
+    max-width: 800px; /* Increased width for a larger layout */
+    margin: auto;
+}
+
+.note-input {
+    text-align: center;
+}
+
+.note-input input,
+.note-input textarea,
+.note-form select {
+    background-color: #1e1e1e; /* Dark background */
+    color: white; /* White text */
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.note-input input:focus,
+.note-input textarea:focus,
+.note-form select:focus {
+    outline: none;
+    border: 1px solid #007bff; /* Highlight on focus */
+}
+
+.make-note-box {
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    padding: 15px;
+    transition: height 0.3s ease, padding 0.3s ease; /* Animation for height */
+    overflow: hidden;
+    cursor: pointer;
+    height: 45px; /* Set a shorter height for the box when not hovered */
+    width: 770px; /* Keep the width longer */
+}
+
+.make-note-text {
+    font-size: 18px;
+    text-align: center;
+}
+
+.note-form {
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    margin-top: 10px;
+    padding-bottom: 20px; /* Add padding to the bottom of the form */
+}
+
+.make-note-box:hover {
+    height: 300px; /* Expand height on hover */
+    padding: 15px 15px 30px; /* Add extra padding for the form */
+}
+
+.make-note-box:hover .note-form {
+    display: flex; /* Show the form on hover */
+}
+
+#notesList {
+    margin-top: 20px;
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 10px; /* Space between notes */
+}
+
+.note-box {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /* Stack title and preview vertically */
+    transition: transform 0.3s ease; /* Animation for the note box */
+    opacity: 0; /* Start hidden for animation */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.note-box.show {
+    transform: translateY(0); /* Final position */
+    opacity: 1; /* Fade in */
+}
+
+.note-title {
+    font-weight: bold;
+    margin-bottom: 5px; /* Space between title and preview */
+}
+
+.note-preview {
+    color: #b0b0b0;
+    flex-grow: 1; /* Allow preview to take available space */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s; /* Animation for modal */
+}
+
+.modal-content {
+    background-color: #222;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    animation: slideIn 0.3s; /* Animation for content */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); }
+    to { transform: translateY(0); }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px; /* Adjust padding for a thinner button */
+    background-color: #ff8c00; /* Change to orange color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    min-height: 40px; /* Set a minimum height for the button */
+    margin-top: 10px; /* Add margin to move the button higher */
+    width: 100%; /* Make the button take the full width of the form */
+}
+
+button:hover {
+    background-color: #e07b00; /* Darker orange for hover effect */
+}
+
+.full-note {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#editNoteBtn {
+    background-color: #007bff; /* Blue color for edit button */
+    margin-right: 10px; /* Space between buttons */
+}
+
+.note-form select {
+    background-color: #1e1e1e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.note-flair {
+    font-weight: bold;
+    color: white; /* Set text color to white */
+    padding: 5px 10px; /* Add padding to create a box effect */
+    border-radius: 5px; /* Round the corners of the box */
+    margin-bottom: 5px; /* Space between flair and title */
+    display: inline-block; /* Make the flair box fit the content */
+}
+
+.note-flair.misc {
+    background-color: grey; /* Background color for Misc flair */
+}
+
+.note-flair.school {
+    background-color: red; /* Background color for School flair */
+}
+
+.note-flair.work {
+    background-color: yellow; /* Background color for Work flair */
+    color: black; /* Change text color to black for better contrast */
+}
+
+.note-flair.home {
+    background-color: blue; /* Background color for Home flair */
+}
+
+#deleteNoteBtn {
+    background-color: red; /* Red color for delete button */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    min-height: 40px; /* Set a minimum height for the button */
+    margin-top: 10px; /* Add margin to move the button higher */
+    width: 100%; /* Make the button take the full width of the form */
+}
+
+#deleteNoteBtn:hover {
+    background-color: darkred; /* Darker red for hover effect */
+}
+
+#saveNoteBtn {
+    background-color: #28a745; /* Green color for save button */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    min-height: 40px; /* Set a minimum height for the button */
+    margin-top: 10px; /* Add margin to move the button higher */
+    width: 100%; /* Make the button take the full width of the form */
+}
+
+#saveNoteBtn:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+
+.note-input input,
+.note-input textarea {
+    background-color: #1e1e1e; /* Dark background */
+    color: white; /* White text */
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    padding: 10px; /* Padding for better spacing */
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.note-input textarea {
+    min-height: 100px; /* Set a minimum height for the textarea */
+    resize: vertical; /* Allow vertical resizing */
+}
